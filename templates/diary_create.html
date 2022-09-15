@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MyDiaryApp</title>
-</head>
-<body>
- 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">投稿</button>
-</form>
- 
-</body>
-</html>
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <h1>日記の作成</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>{{ form.date.label }}</label>
+            {{ form.date | add_class:'form-control col-2' }}
+        </div>
+        <div class="form-group">
+            <label>{{ form.title.label }}</label>
+            {{ form.title | add_class:'form-control col-2' }}
+        </div>
+        <div class="form-group">
+            <label>{{ form.text.label }}</label>
+            {{ form.text | add_class:'form-control col-2' }}
+        </div>
+        <button type="submit" class="form-control col-1">投稿</button>
+    </form>
+{% endblock %}
