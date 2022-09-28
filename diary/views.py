@@ -46,7 +46,7 @@ class DiaryUpdateView(UpdateView):
 
     def form_valid(selfself,form):
         diary=form.save(commit=False)
-        diary.update_at=timezone.now()
+
         diary.save()
         return super().form_valid(form)
 
